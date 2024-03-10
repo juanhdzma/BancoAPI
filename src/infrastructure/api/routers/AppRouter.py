@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from src.infrastructure.repositories.SQLite.dao.BasicOperations import BasicOperations
+from src.infrastructure.repositories.SQLite.dao.BasicOperations import BasicOperations
 
 banco_router = APIRouter()
 
@@ -9,7 +10,7 @@ def health_checker():
     user_dao = BasicOperations()
 
     # Add a new user
-    respuesta = user_dao.add_user(username='As', email='As@example.com')
+    respuesta = user_dao.add_user(username='ASdasdasdasd', email='asdasdasdasdsfsdgsdf@example.com')
 
     # Retrieve all users
     all_users = user_dao.get_all_users()
@@ -17,6 +18,11 @@ def health_checker():
         print(f"User: {user.username}, Email: {user.email}")
 
     return respuesta
+
+@banco_router.post("/user")
+def createUser():
+
+
 
 ## Crear Cliente
 ## Configurar los productos del banco (tipos de cuentras de ahorro y tipos de tarjeta de credito)

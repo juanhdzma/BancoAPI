@@ -1,7 +1,7 @@
 from src.infrastructure.repositories.SQLite.adapter.SQLiteDatabase import SQLiteDatabase
 from src.infrastructure.repositories.SQLite.models.User import User
 from src.domain.response.Exceptions import *
-from src.domain.response.Result import *
+from src.domain.response.Response import *
 
 class BasicOperations:
     def __init__(self):
@@ -13,9 +13,9 @@ class BasicOperations:
             new_user = User(username=username, email=email)
             session.add(new_user)
             session.commit()
-            return Result.ok("Terminado")
+            return Response.ok("Terminado", StatusCode.CREATED)
         except BaseException:
-             return Result.failure(BadMessageException("Fallo en repetido", "Volver a intentar"))
+            return Response.failure(BadMessageException("Fallo en repetido"))
         finally:
             self.database.closeConnection(session)
 

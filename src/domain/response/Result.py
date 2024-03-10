@@ -1,23 +1,27 @@
-from typing import Type, TypeVar, Optional
+from typing import TypeVar
 from datetime import datetime
 from src.domain.response.Exceptions import *
 from fastapi.encoders import jsonable_encoder
-from fastapi.responses import JSONResponse
 
 T = TypeVar('T')
 
-class Response:
-    def __init__(self, isError: bool, data: T, timestamp: datetime):
-        self.isError = isError
-        self.data = data
-        self.timestamp = timestamp
-
 class Result:
-    @staticmethod
-    def ok(data: Optional[T] = None) -> Response:
-        return Response(isError=False, data=data or None, timestamp=datetime.now())
+    def __init__(self, data: T):
+        self.isError = False
+        self.data = data
+        self.timestamp = datetime.now()
+    
+    def serialize(self):
+        return jsonable_encoder(self)
 
-    @staticmethod
-    def failure(exception: Type[Exception]) -> Exception:
-        respuesta = jsonable_encoder(exception)
-        return JSONResponse(content=respuesta, status_code=exception.statusCode.value)
+class CorrectResult(Result):
+    def __init__(self, data: T):
+        super().__init__(data, StatusCode.OK)
+
+class EntityCreated(Result):
+    def __init__(self, data: T):
+        super().__init__(data, StatusCode.CREATED)
+
+class NoContent(Result):
+    def __init__(self, data: T):
+        super().__init__(data, StatusCode.NO_CONTENT)
