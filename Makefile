@@ -9,4 +9,5 @@ test:
 	echo 'Algo'
 
 run:
-	uvicorn src.main:app --reload
+	python -B -m uvicorn src.main:app --reload
+
