@@ -22,7 +22,3 @@ class CorrectResult(Result):
 class EntityCreated(Result):
     def __init__(self, data: T):
         super().__init__(data, StatusCode.CREATED)
-
-class NoContent(Result):
-    def __init__(self, data: T):
-        super().__init__(data, StatusCode.NO_CONTENT)

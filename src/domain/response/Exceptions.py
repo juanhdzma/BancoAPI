@@ -23,3 +23,7 @@ class ConflictException(Exception):
 class InternalServerErrorException(Exception):
     def __init__(self, message: str):
         super().__init__(message, StatusCode.INTERNAL_SERVER_ERROR)
+
+class NotFoundException(Exception):    
+    def __init__(self, message: str):
+        super().__init__(message, StatusCode.NOT_FOUND)
