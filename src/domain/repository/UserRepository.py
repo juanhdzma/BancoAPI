@@ -1,12 +1,16 @@
 from abc import abstractmethod
-from src.application.data.dataIn.IUserDataIn import IUserIn
+from src.application.data.IUser import IUser
 from src.domain.response.Result import Result
 
 class UserRepository:
     @abstractmethod
-    def crearUsuario(self, data: IUserIn) -> Result:
+    def crearUsuario(self, data: IUser) -> Result:
         pass
 
     @abstractmethod
     def consultarUsuario(self, id: str) -> Result:
+        pass
+
+    @abstractmethod
+    def consultarUsuarios(self) -> Result:
         pass

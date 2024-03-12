@@ -1,14 +1,15 @@
 from typing import TypeVar
 from datetime import datetime
-from src.domain.response.Exceptions import *
+from src.domain.response.StatusCode import *
 from fastapi.encoders import jsonable_encoder
 
 T = TypeVar('T')
 
 class Result:
-    def __init__(self, data: T):
+    def __init__(self, data: T, statusCode):
         self.isError = False
         self.data = data
+        self.statusCode = statusCode
         self.timestamp = datetime.now()
     
     def serialize(self):

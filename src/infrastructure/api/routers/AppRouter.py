@@ -1,27 +1,21 @@
 from fastapi import APIRouter
-from src.infrastructure.repositories.SQLite.dao.BasicOperations import BasicOperations
-from src.infrastructure.repositories.SQLite.dao.BasicOperations import BasicOperations
+from src.application.data.IUser import IUser
+from src.application.services.UserService import UserService
 
 banco_router = APIRouter()
-
-@banco_router.get("/")
-def health_checker():
-    # Create the UserDao instance
-    user_dao = BasicOperations()
-
-    # Add a new user
-    respuesta = user_dao.add_user(username='ASdasdasdasd', email='asdasdasdasdsfsdgsdf@example.com')
-
-    # Retrieve all users
-    all_users = user_dao.get_all_users()
-    for user in all_users:
-        print(f"User: {user.username}, Email: {user.email}")
-
-    return respuesta
+userService = UserService()
 
 @banco_router.post("/user")
-def createUser():
+def createUser(payload: IUser):
+    return userService.createUser(payload)
 
+@banco_router.get("/user/{user_id}")
+def getUser(user_id):
+    return userService.getUser(user_id)
+
+@banco_router.get("/users")
+def getUser():
+    return userService.getAllUsers()
 
 
 ## Crear Cliente

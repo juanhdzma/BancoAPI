@@ -1,5 +1,4 @@
-from typing import Type, TypeVar, Optional
-from src.domain.response.Exceptions import *
+from typing import Type, TypeVar
 from fastapi.responses import JSONResponse
 from src.domain.response.Result import *
 
@@ -7,9 +6,8 @@ T = TypeVar('T')
 
 class Response:
     @staticmethod
-    def ok(data: Optional[T], statusCode) -> Result:
-        response = Result(isError=False, data=data or None)
-        return JSONResponse(content=response.serialize(), status_code=statusCode.value)
+    def ok(data: T) -> Result:
+        return JSONResponse(content=data.serialize(), status_code=data.statusCode.value)
 
     @staticmethod
     def failure(exception: Type[Exception]) -> Exception:
