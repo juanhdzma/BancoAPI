@@ -19,7 +19,11 @@ class UserService:
         return Response.failure(ConflictException("El usuario ya existe en la base de datos"))
     
     def getUser(self, id):
-        result = self.user_service.consultarUsuario(id)
+        if (id.isdigit()):
+            result = self.user_service.consultarUsuario(id)
+        else:
+            return Response.failure(BadRequestException("Id no valido"))
+
         if result:
             result = result.serialize()
             return Response.ok(CorrectResult(result))

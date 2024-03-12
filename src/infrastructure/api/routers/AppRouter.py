@@ -1,8 +1,6 @@
 from fastapi import APIRouter, Depends
 from src.application.data.IUser import IUser
-from src.application.data.IDocument import IDocument
 from src.application.services.UserService import UserService
-from src.infrastructure.api.util.ValidatePathVariable import make_model
 
 banco_router = APIRouter()
 userService = UserService()
@@ -12,8 +10,8 @@ def createUser(payload: IUser):
     return userService.createUser(payload)
 
 @banco_router.get("/user/{id}")
-def getUser(user = make_model(IDocument)):
-    return userService.getUser(user.id)
+def getUser(id):
+    return userService.getUser(id)
 
 @banco_router.get("/users")
 def getUser():
