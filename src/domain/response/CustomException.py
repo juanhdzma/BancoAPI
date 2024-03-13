@@ -32,3 +32,9 @@ class InternalServerErrorException(CustomException):
 class NotFoundException(CustomException):
     def __init__(self, message: str):
         super().__init__(message, StatusCode.NOT_FOUND)
+
+
+class TeapotException(CustomException):
+    def __init__(self, message: str):
+        super().__init__(message, StatusCode.TEAPOT)
+
