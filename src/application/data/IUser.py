@@ -5,7 +5,7 @@ class IUser(BaseModel):
     id: str
     phone: str
     name: str
-    lastName: str
+    last_name: str
 
     @field_validator("id")
     def validateId(cls, value):
@@ -19,7 +19,7 @@ class IUser(BaseModel):
             return value
         raise ValueError("El telefono no es valido")
     
-    @field_validator("name", "lastName")
+    @field_validator("name", "last_name")
     def validateName(cls, value):
         if value.isalpha():
             return value

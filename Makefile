@@ -1,5 +1,7 @@
+ACTIVATE = .\myvenv\Scripts\activate
+PYTHON = .\myvenv\Scripts\python.exe
+
 setup:
-	.\venv\Scripts\activate
 	pip install -r requirements.txt
 
 requirements:
@@ -9,5 +11,5 @@ test:
 	echo 'Algo'
 
 run:
-	python -B -m uvicorn src.main:app --reload
+	${PYTHON} -B -m uvicorn src.main:app --reload
 
