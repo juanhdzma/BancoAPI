@@ -2,6 +2,7 @@ from sqlalchemy import Column, String
 from src.infrastructure.repositories.SQLite.models.ModelsCreator import Base
 from dataclasses import dataclass
 
+
 @dataclass
 class User(Base):
     __tablename__ = 'user'

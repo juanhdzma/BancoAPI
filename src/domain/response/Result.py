@@ -5,8 +5,9 @@ from fastapi.encoders import jsonable_encoder
 
 T = TypeVar('T')
 
+
 class Result:
-    def __init__(self, data: T, statusCode):
+    def __init__(self, data: T, statusCode: StatusCode):
         self.isError = False
         self.data = data
         self.statusCode = statusCode
@@ -15,9 +16,11 @@ class Result:
     def serialize(self):
         return jsonable_encoder(self)
 
+
 class CorrectResult(Result):
     def __init__(self, data: T):
         super().__init__(data, StatusCode.OK)
+
 
 class EntityCreated(Result):
     def __init__(self, data: T):

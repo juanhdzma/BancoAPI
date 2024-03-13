@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
-from src.domain.response.Exceptions import BadRequestException
+from src.domain.response.CustomException import BadRequestException
 from src.domain.response.Response import Response
 from src.infrastructure.api.routers.AppRouter import banco_router
 
