@@ -20,8 +20,11 @@ def getUser(idUser):
 def getUser():
     return userService.getAllUsers()
 
+# @banco_router.post("/account")
+# def createAccount(payload: IUser):
+#     return userService.createUser(payload)
 
-# Crear Cliente
+
 # Configurar los productos del banco (tipos de cuentras de ahorro y tipos de tarjeta de credito)
 # Consulta de saldo (Corrientes, ahorro, credito)
 # Historial de transacciones
