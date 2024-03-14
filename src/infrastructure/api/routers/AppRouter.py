@@ -24,8 +24,14 @@ def getUser():
 # def createAccount(payload: IUser):
 #     return userService.createUser(payload)
 
+# Hacer consignacion
 
-# Configurar los productos del banco (tipos de cuentras de ahorro y tipos de tarjeta de credito)
-# Consulta de saldo (Corrientes, ahorro, credito)
-# Historial de transacciones
-# Transferencia de fondos entre propias cuentas y otras
+# Crear cuenta
+# Desactivar cuenta
+
+# Mostrar historial de una cuenta
+
+# Transferir de una cuenta a otra
+
+# Consultar saldo de todas las cuentas
+# Consultar saldo de una cuenta en especifico
