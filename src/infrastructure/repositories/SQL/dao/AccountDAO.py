@@ -23,7 +23,7 @@ class AccountDAO(AccountRepository):
     def consultarCuentas(self, idUser: str):
         try:
             session = self.database.createConnection()
-            accounts = session.query(Account).filter_by(user_id=idUser).all()
+            accounts = session.query(Account).filter_by(user_id=idUser, status=True).all()
             return accounts
         except BaseException:
             return False
@@ -33,9 +33,22 @@ class AccountDAO(AccountRepository):
     def consultarCuenta(self, idAccount: int):
         try:
             session = self.database.createConnection()
-            account = session.query(Account).filter_by(id=idAccount).first()
+            account = session.query(Account).filter_by(id=idAccount, status=True).first()
             return account
         except BaseException:
             return False
         finally:
             self.database.closeConnection(session)
+
+    def desactivarCuenta(self, idAccount: int):
+        try:
+            session = self.database.createConnection()
+            session.query(Account).filter_by(id=idAccount).update({"status": False})
+            session.commit()
+            return True
+        except BaseException as error:
+            print
+            return False
+        finally:
+            self.database.closeConnection(session)
+

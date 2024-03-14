@@ -32,6 +32,10 @@ def getAccount(idAccount):
 def getUserAccounts(idUser):
     return accountService.getAllUserAccounts(idUser)
 
+@banco_router.delete("/account/{idAccount}")
+def getUserAccounts(idAccount):
+    return accountService.deactivateAccount(idAccount)
+
 # Hacer consignacion
 # Desactivar cuenta
 

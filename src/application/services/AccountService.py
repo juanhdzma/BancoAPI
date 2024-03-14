@@ -45,3 +45,17 @@ class AccountService:
             result = [i.serialize() for i in result]
             return Response.ok(CorrectResult(result))
         return Response.failure(NotFoundException("No hay cuentas asignadas a este id"))
+    
+    def deactivateAccount(self, idAccount):
+        if idAccount.isdigit():
+            account = self.account_service.consultarCuenta(idAccount)
+        else:
+            return Response.failure(BadRequestException("Id no valido"))
+
+        if account: 
+            balance = account.balance
+            result = self.account_service.desactivarCuenta(account.id)
+            if result:
+                return Response.ok(CorrectResult(f'La cuenta ha sido desactivada, el saldo a desembolsar es ${balance}'))
+            return Response.failure(InternalServerErrorException("Error al desactivar la cuenta")) 
+        return Response.failure(NotFoundException("La cuenta no esta registrada en la base de datos"))
