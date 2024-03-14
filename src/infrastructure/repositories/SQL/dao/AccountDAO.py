@@ -1,17 +1,17 @@
 # from src.infrastructure.repositories.SQL.adapter.SQLiteDatabase import SQLiteDatabase
-from src.infrastructure.repositories.SQL.models.User import User
-from src.domain.repository.UserRepository import UserRepository
+from src.infrastructure.repositories.SQL.models.Account import Account
+from src.domain.repository.AccountRepository import AccountRepository
 
 
-class UserDAO(UserRepository):
+class AccountDAO(AccountRepository):
     def __init__(self, database):
         self.database = database
 
-    def crearUsuario(self, IUser):
+    def crearCuenta(self, IAccount):
         try:
             session = self.database.createConnection()
-            new_user = User(**IUser)
-            session.add(new_user)
+            new_account = Account(**IAccount)
+            session.add(new_account)
             session.commit()
             return True
         except BaseException as error:
@@ -20,21 +20,21 @@ class UserDAO(UserRepository):
         finally:
             self.database.closeConnection(session)
 
-    def consultarUsuario(self, idUser):
+    def consultarCuentas(self, idUser: str):
         try:
             session = self.database.createConnection()
-            user = session.query(User).filter_by(id=idUser).first()
-            return user
+            accounts = session.query(Account).filter_by(user_id=idUser).all()
+            return accounts
         except BaseException:
             return False
         finally:
             self.database.closeConnection(session)
 
-    def consultarUsuarios(self):
+    def consultarCuenta(self, idAccount: int):
         try:
             session = self.database.createConnection()
-            users = session.query(User).all()
-            return users
+            account = session.query(Account).filter_by(id=idAccount).first()
+            return account
         except BaseException:
             return False
         finally:
