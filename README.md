@@ -1,6 +1,14 @@
 # BancoAPI
 
 > [!IMPORTANT]  
-> Antes de iniciar cualquier proceso es necesario ejecutar el comando 'make setup', en caso de no tener instalado Makefile deberá hacerse su instalación o ejecutar los comandos incluidos en el Makefile de forma manual. El setup es importante para activar el entorno virtual e instalar librerias que puedan faltar.
+> Seguir los pasos especificos para poder ejectuar el codigo correctamente.
 
 En este README se encontrara información relevante para ejecutar comandos importantes, además de links a lugares relevantes.
+
+## Pasos
+1. Instalar Makefile, o ejecutar los comandos manualmente.
+2. Ejecutar "make install" en la terminal.
+3. Ejecutar ".\venv\Scripts\activate" en la terminal.
+4. Ejecutar "make setup" en la terminal.
+5. Ejecutar "make run" en la terminal.
+6. Disfrutar de tremendo software que desarrollamos.

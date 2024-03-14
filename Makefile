@@ -1,15 +1,21 @@
-ACTIVATE = .\myvenv\Scripts\activate
-PYTHON = .\myvenv\Scripts\python.exe
+ACTIVATE = .\venv\Scripts\activate
+
+install:
+	@echo 'Instalando entorno virtual de Python, espere ...'
+	@python -m venv venv
 
 setup:
-	pip install -r requirements.txt
+	@echo 'Instalando librerias requeridas, espere ...'
+	@pip install -r requirements.txt
 
 requirements:
-	pip freeze > requirements.txt
+	@echo 'Guardar archivo de librerias requeridas, espere ...'
+	@pip freeze > requirements.txt
 
 test:
 	echo 'Algo'
 
 run:
-	${PYTHON} -B -m uvicorn src.main:app --reload
+	@echo 'Iniciando servidor, espere ...'
+	@.\venv\Scripts\python.exe -B -m uvicorn src.main:app --reload
 
