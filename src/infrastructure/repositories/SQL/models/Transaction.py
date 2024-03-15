@@ -9,7 +9,7 @@ class Transaction(Base):
     __tablename__ = 'transaction'
     id = Column(Integer, primary_key=True, autoincrement=True)
     source_account = Column(Integer, unique=False, nullable=True)
-    destination_accout = Column(Integer, unique=False, nullable=False)
+    destination_account = Column(Integer, unique=False, nullable=False)
     value = Column(Float, unique=False, nullable=False)
     transaction_datetime = Column(DateTime, unique=False, nullable=False, default=func.now())
 

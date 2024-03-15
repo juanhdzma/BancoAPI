@@ -1,12 +1,16 @@
 from fastapi import APIRouter
+from src.application.data.IConsignment import IConsignment
+from src.application.data.ITransaction import ITransaction
 from src.application.data.IUser import IUser
 from src.application.data.IAccount import IAccount
 from src.application.services.UserService import UserService
 from src.application.services.AccountService import AccountService
+from src.application.services.TransactionService import TransactionService
 
 banco_router = APIRouter()
 userService = UserService()
 accountService = AccountService()
+transactionService = TransactionService()
 
 @banco_router.post("/user")
 def createUser(payload: IUser):
@@ -17,7 +21,7 @@ def getUser(idUser):
     return userService.getUser(idUser)
 
 @banco_router.get("/users")
-def getUser():
+def getUsers():
     return userService.getAllUsers()
 
 @banco_router.post("/account")
@@ -33,14 +37,22 @@ def getUserAccounts(idUser):
     return accountService.getAllUserAccounts(idUser)
 
 @banco_router.delete("/account/{idAccount}")
-def getUserAccounts(idAccount):
+def deactivateAccount(idAccount):
     return accountService.deactivateAccount(idAccount)
 
 # Hacer consignacion
-# Desactivar cuenta
-
+@banco_router.post("/consignment")
+def consignAccount(consignment: IConsignment):
+    return transactionService.consignAccount(consignment)
 
 # Mostrar historial de una cuenta
+@banco_router.get("/record/{idAccount}")
+def getRecords(idAccount):
+    return transactionService.getRecords(idAccount)
+
 # Transferir de una cuenta a otra
+@banco_router.post("/transfer")
+def transferMoney(transfer: ITransaction):
+    return transactionService.transferMoney(transfer)
 
 

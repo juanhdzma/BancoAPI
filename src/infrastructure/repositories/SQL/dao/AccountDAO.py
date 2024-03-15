@@ -7,10 +7,10 @@ class AccountDAO(AccountRepository):
     def __init__(self, database):
         self.database = database
 
-    def crearCuenta(self, IAccount):
+    def crearCuenta(self, data):
         try:
             session = self.database.createConnection()
-            new_account = Account(**IAccount)
+            new_account = Account(**data)
             session.add(new_account)
             session.commit()
             return True
