@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from .....util.Envs import *
+from src.infrastructure.Envs import *
 
 
 class CloudDatabase:

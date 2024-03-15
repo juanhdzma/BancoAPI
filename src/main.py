@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from src.domain.response.CustomException import *
 from src.domain.response.Response import Response
-from src.infrastructure.api.routers.AppRouter import banco_router
+from src.infrastructure.api.router.AppRouter import banco_router
 
 app = FastAPI()
 app.include_router(banco_router, prefix="/BancoV1")

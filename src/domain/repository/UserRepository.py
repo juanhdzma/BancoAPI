@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from src.application.data.IUser import IUser
-from src.infrastructure.repositories.SQL.models.User import User
+from src.infrastructure.repositories.SQL.model.User import User
 from typing import List
 
 

@@ -1,5 +1,4 @@
-# from src.infrastructure.repositories.SQL.adapter.SQLiteDatabase import SQLiteDatabase
-from src.infrastructure.repositories.SQL.models.User import User
+from src.infrastructure.repositories.SQL.model.User import User
 from src.domain.repository.UserRepository import UserRepository
 
 

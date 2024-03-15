@@ -5,9 +5,9 @@ from src.domain.response.StatusCode import StatusCode
 
 class CustomException(Exception):
     def __init__(self, message: str, statusCode: StatusCode):
-        self.isError = True
+        self.is_error = True
         self.message = message
-        self.statusCode = statusCode
+        self.status_code = statusCode
         self.timestamp = datetime.now()
     
     def serialize(self):

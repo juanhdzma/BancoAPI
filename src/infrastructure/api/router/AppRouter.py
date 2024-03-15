@@ -3,9 +3,9 @@ from src.application.data.IConsignment import IConsignment
 from src.application.data.ITransaction import ITransaction
 from src.application.data.IUser import IUser
 from src.application.data.IAccount import IAccount
-from src.application.services.UserService import UserService
-from src.application.services.AccountService import AccountService
-from src.application.services.TransactionService import TransactionService
+from src.application.service.UserService import UserService
+from src.application.service.AccountService import AccountService
+from src.application.service.TransactionService import TransactionService
 
 banco_router = APIRouter()
 userService = UserService()
