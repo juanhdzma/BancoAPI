@@ -13,8 +13,8 @@ async def validation_exception_handler(request: Request, err: RequestValidationE
 
 @app.exception_handler(404)
 async def custom_404_handler(_, __):
-    return Response.failure(TeapotException("Uy manito, por aca no era, hmm hmm, digo, I'M A TEAPOT"))
+    return Response.failure(NotFoundException("Ruta no encontrada"))
 
 @app.exception_handler(405)
 async def custom_405_handler(_, __):
-    return Response.failure(TeapotException("Uy manito, por aca no era, hmm hmm, digo, I'M A TEAPOT"))
+    return Response.failure(NotFoundException("Metodo incorrecto"))

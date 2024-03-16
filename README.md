@@ -47,4 +47,12 @@ make run
 
 ¡Ahora puedes disfrutar de todas las funciones y características que hemos desarrollado para ti!
 
+## Diagramas
 
+A continuacion se encuentra el enlace al archivo .drawio en el cual estan dispuestos los diagramas del proyecto.
+
+[Diagramas del BancoAPI](DiagramasBanco.drawio)
+
+## Documentacion de Endpoints
+
+Por realizar ...
