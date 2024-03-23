@@ -1,5 +1,5 @@
-from src.infrastructure.repositories.SQL.model.Transaction import Transaction
-from src.infrastructure.repositories.SQL.model.Account import Account
+from src.infrastructure.repository.SQL.model.Transaction import Transaction
+from src.infrastructure.repository.SQL.model.Account import Account
 from src.domain.repository.TransactionRepository import TransactionRepository
 from sqlalchemy import or_
 

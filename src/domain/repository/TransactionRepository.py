@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from src.application.data.ITransaction import ITransaction
 from src.application.data.IConsignment import IConsignment
-from src.infrastructure.repositories.SQL.model.Transaction import Transaction
+from src.infrastructure.repository.SQL.model.Transaction import Transaction
 from typing import List
 
 

@@ -1,4 +1,4 @@
-from src.infrastructure.repositories.SQL.model.User import User
+from src.infrastructure.repository.SQL.model.User import User
 from src.domain.repository.UserRepository import UserRepository
 
 

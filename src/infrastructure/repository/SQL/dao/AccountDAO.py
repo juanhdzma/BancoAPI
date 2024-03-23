@@ -1,4 +1,4 @@
-from src.infrastructure.repositories.SQL.model.Account import Account
+from src.infrastructure.repository.SQL.model.Account import Account
 from src.domain.repository.AccountRepository import AccountRepository
 
 

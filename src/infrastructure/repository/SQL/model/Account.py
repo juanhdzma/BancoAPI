@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer, Float, Boolean
-from src.infrastructure.repositories.SQL.model.ModelsCreator import Base
+from src.infrastructure.repository.SQL.model.ModelsCreator import Base
 from dataclasses import dataclass
 
 

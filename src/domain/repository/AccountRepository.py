@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from src.infrastructure.repositories.SQL.model.Account import Account
+from src.infrastructure.repository.SQL.model.Account import Account
 from src.application.data.IAccount import IAccount
 from typing import List
 

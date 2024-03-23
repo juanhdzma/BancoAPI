@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, Float, DateTime
 from sqlalchemy.sql import func
-from src.infrastructure.repositories.SQL.model.ModelsCreator import Base
+from src.infrastructure.repository.SQL.model.ModelsCreator import Base
 from dataclasses import dataclass
 
 

@@ -1,11 +1,11 @@
 from injector import inject, Module, singleton
-from src.infrastructure.repositories.SQL.adapter.CloudDatabase import CloudDatabase
+from src.infrastructure.repository.SQL.adapter.CloudDatabase import CloudDatabase
 from src.domain.repository.UserRepository import UserRepository
 from src.domain.repository.AccountRepository import AccountRepository
 from src.domain.repository.TransactionRepository import TransactionRepository
-from src.infrastructure.repositories.SQL.dao.UserDAO import UserDAO 
-from src.infrastructure.repositories.SQL.dao.AccountDAO import AccountDAO 
-from src.infrastructure.repositories.SQL.dao.TransactionDAO import TransactionDAO 
+from src.infrastructure.repository.SQL.dao.UserDAO import UserDAO 
+from src.infrastructure.repository.SQL.dao.AccountDAO import AccountDAO 
+from src.infrastructure.repository.SQL.dao.TransactionDAO import TransactionDAO 
 
 database = CloudDatabase()
 
