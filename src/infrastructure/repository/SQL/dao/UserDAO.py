@@ -24,7 +24,8 @@ class UserDAO(UserRepository):
             session = self.database.createConnection()
             user = session.query(User).filter_by(id=idUser).first()
             return user
-        except BaseException:
+        except BaseException as error:
+            print(error)
             return False
         finally:
             self.database.closeConnection(session)

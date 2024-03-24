@@ -1,11 +1,17 @@
 # BancoAPI
 
-Este documento proporciona información esencial para ejecutar los comandos necesarios y aprovechar al máximo nuestro software. 
+Este repositorio contiene una API RESTful construida con arquitectura hexagonal. El lenguaje de programación utilizado fue Python con FastAPI. La API tiene como objetivo principal gestionar los procesos de un banco. Estos procesos comprenden operaciones como la gestión de usuarios, la gestión de cuentas (ahorros, corrientes y de crédito), transacciones entre cuentas propias y de otros bancos, además de consignaciones y depósitos.
+
+## Participantes
+
+* [Juan Carlos Hernandez Mariño](https://www.linkedin.com/in/juanhdzma/)
+* Carlos Daniel Martinez Zarate
+* Kevin Alejandro Rogriguez Grijalba
+
+## Pasos para ejecutar
 
 > [!IMPORTANT]  
 > Asegúrate de seguir cada paso cuidadosamente para una experiencia sin problemas.
-
-## Pasos
 
 ### 1. Instalación de requisitos
 
@@ -51,7 +57,7 @@ make run
 
 A continuacion se encuentra el enlace al archivo .drawio en el cual estan dispuestos los diagramas del proyecto.
 
-[Diagramas del BancoAPI](DiagramasBanco.drawio)
+[Diagramas del BancoAPI](./docs/diagramas/DiagramasBanco.drawio)
 
 ## Documentacion de Endpoints
 
