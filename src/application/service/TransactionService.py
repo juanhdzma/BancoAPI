@@ -47,7 +47,7 @@ class TransactionService:
         accountDestination = self.account_service.consultarCuenta(params['destination_account'])
         accountOrigin = self.account_service.consultarCuenta(params['source_account'])
 
-        if accountOrigin == False:
+        if accountOrigin == None or accountOrigin == False:
             return Response.failure(BadRequestException("La cuenta de origen no existe"))
 
         if accountOrigin.balance < params['value']:
@@ -57,5 +57,5 @@ class TransactionService:
             result = self.transaction_service.hacerTransferencia(params)
             if result:
                 return Response.ok(CorrectResult("Transferencia realizada con exito"))
-            return Response.failure(InternalServerErrorException("Error al realizar la consignacion"))
+            return Response.failure(InternalServerErrorException("Error al realizar la transferencia"))
         return Response.failure(BadRequestException("La cuenta de destino no existe"))

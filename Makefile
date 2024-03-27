@@ -17,5 +17,5 @@ test:
 
 run:
 	@echo 'Iniciando servidor, espere ...'
-	@.\venv\Scripts\python.exe -B -m uvicorn src.main:app --reload
+	@.\venv\Scripts\python.exe -B -m uvicorn src.main:app --reload --host 127.0.0.1 --port 8000
 
