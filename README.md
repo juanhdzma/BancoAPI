@@ -61,4 +61,6 @@ A continuacion se encuentra el enlace al archivo .drawio en el cual estan dispue
 
 ## Documentacion de Endpoints
 
-Por realizar ...
+[Archivo de Postman](./docs/postman/BancoAPI.postman.json)
+
+[OpenAPI](http://127.0.0.1:8000/docs) (el servidor debe estar activo)
