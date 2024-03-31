@@ -8,14 +8,27 @@ setup:
 	@echo 'Instalando librerias requeridas, espere ...'
 	@pip install -r requirements.txt
 
-requirements:
+requirement:
 	@echo 'Guardar archivo de librerias requeridas, espere ...'
 	@pip freeze > requirements.txt
 
-test:
-	echo 'Algo'
+integration-test:
+	@echo 'Ejecutando tests de integracion, espere ...'
+	@pytest test/integration/
 
-run:
-	@echo 'Iniciando servidor, espere ...'
-	@.\venv\Scripts\python.exe -B -m uvicorn src.main:app --reload --host 127.0.0.1 --port 8000
+unit-test:
+	@echo 'Ejecutando unit tests, espere ...'
+	@pytest test/unit/
+
+run-local:
+	@del operations.db
+	@copy env\local.env .env
+	@echo 'Iniciando servidor con variable locales, espere ...'
+	@.\venv\Scripts\python.exe -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000
+
+run-prod:
+	@copy env\prod.env .env
+	@echo 'Iniciando servidor con variable de produccion, espere ...'
+	@.\venv\Scripts\python.exe -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000
+
 

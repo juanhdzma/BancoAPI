@@ -1,11 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from src.infrastructure.Envs import DB_NAME
 from src.infrastructure.repository.SQL.model.ModelsCreator import Base
 
 
 class SQLiteDatabase:
     def __init__(self):
-        self.engine = create_engine('sqlite:///operaciones.db')
+        self.engine = create_engine(f'sqlite:///{DB_NAME}.db')
         self.__createTables()
 
     def __createTables(self):

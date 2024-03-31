@@ -31,4 +31,4 @@ async def custom_404_handler(_, __):
 
 @app.exception_handler(405)
 async def custom_405_handler(_, __):
-    return Response.failure(NotFoundException("Metodo incorrecto"))
+    return Response.failure(InvalidMethodException("Metodo incorrecto"))

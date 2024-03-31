@@ -1,4 +1,6 @@
 from injector import inject, Module, singleton
+from src.infrastructure.repository.SQL.adapter.SQLiteDatabase import SQLiteDatabase
+from src.infrastructure.Envs import ENV
 from src.infrastructure.repository.SQL.adapter.CloudDatabase import CloudDatabase
 from src.domain.repository.UserRepository import UserRepository
 from src.domain.repository.AccountRepository import AccountRepository
@@ -7,8 +9,10 @@ from src.infrastructure.repository.SQL.dao.UserDAO import UserDAO
 from src.infrastructure.repository.SQL.dao.AccountDAO import AccountDAO 
 from src.infrastructure.repository.SQL.dao.TransactionDAO import TransactionDAO 
 
-database = CloudDatabase()
-
+if ENV == 'local':
+    database = SQLiteDatabase()
+elif ENV  == 'prod':
+    database = CloudDatabase()
 
 class DependencyContainer(Module):
     @singleton
