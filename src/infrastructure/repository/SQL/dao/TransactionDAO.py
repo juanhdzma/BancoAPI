@@ -35,8 +35,7 @@ class TransactionDAO(TransactionRepository):
             session.add(new_consignment)
             session.commit()
             return True
-        except BaseException as error:
-            print(error)
+        except BaseException:
             return False
         finally:
             self.database.closeConnection(session)
@@ -46,7 +45,7 @@ class TransactionDAO(TransactionRepository):
             session = self.database.createConnection()
             response = session.query(Transaction).filter(or_(Transaction.source_account == idAccount, Transaction.destination_account == idAccount)).all()
             return response
-        except BaseException as error:
+        except BaseException:
             return False
         finally:
             self.database.closeConnection(session)

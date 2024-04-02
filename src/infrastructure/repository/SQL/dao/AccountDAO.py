@@ -13,8 +13,7 @@ class AccountDAO(AccountRepository):
             session.add(new_account)
             session.commit()
             return True
-        except BaseException as error:
-            print(error)
+        except BaseException:
             return False
         finally:
             self.database.closeConnection(session)
@@ -45,8 +44,7 @@ class AccountDAO(AccountRepository):
             session.query(Account).filter_by(id=idAccount).update({"status": False})
             session.commit()
             return True
-        except BaseException as error:
-            print
+        except BaseException:
             return False
         finally:
             self.database.closeConnection(session)

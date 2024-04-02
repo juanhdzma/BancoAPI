@@ -13,8 +13,7 @@ class UserDAO(UserRepository):
             session.add(new_user)
             session.commit()
             return True
-        except BaseException as error:
-            print(error)
+        except BaseException:
             return False
         finally:
             self.database.closeConnection(session)
@@ -24,8 +23,7 @@ class UserDAO(UserRepository):
             session = self.database.createConnection()
             user = session.query(User).filter_by(id=idUser).first()
             return user
-        except BaseException as error:
-            print(error)
+        except BaseException:
             return False
         finally:
             self.database.closeConnection(session)
