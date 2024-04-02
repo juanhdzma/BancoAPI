@@ -26,7 +26,7 @@ def test_get_user():
     notFoundResponse = get(f"{BASE_URL}/user/2")
 
     assert validResponse.status_code == 200, 'Error al validar el codigo de respuesta cuando se obtiene un usuario valido'
-    assert removeTimestamp(validResponse.json) == GetUserOUT.responseUser1, 'Error al validar data cuando se obtiene un usuario valido'
+    assert removeTimestamp(validResponse.json()) == GetUserOUT.responseUser1, 'Error al validar data cuando se obtiene un usuario valido'
 
     assert invalidIDResponse.status_code == 400, 'Error en ID invalido al obtener usuario'
     assert notFoundResponse.status_code == 404, 'Error en usuario no encontrado al obtener usuario'
@@ -41,4 +41,4 @@ def test_get_users():
     validResponse = get(f"{BASE_URL}/users")
 
     assert validResponse.status_code == 200, 'Error al validar el codigo de respuesta cuando se obtienen los usuarios'
-    assert removeTimestamp(validResponse.json) == GetUserOUT.responseUsers, 'Error al validar data cuando se obtienen los usuarios'
+    assert removeTimestamp(validResponse.json()) == GetUserOUT.responseUsers, 'Error al validar data cuando se obtienen los usuarios'

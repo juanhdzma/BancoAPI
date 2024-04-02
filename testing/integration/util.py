@@ -1,8 +1,8 @@
-from src.infrastructure.configuration.DependencyContainer import database
+import shutil
 
 def resetDB(func):
     def wrapper():
-        database.resetDatabase()
+        shutil.copy(f'base.db', 'operations.db')
         func()
     return wrapper
 
