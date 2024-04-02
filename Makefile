@@ -14,11 +14,11 @@ requirement:
 
 integration-test:
 	@echo 'Ejecutando tests de integracion, espere ...'
-	@pytest test/integration/
+	@pytest ./testing/integration/
 
 unit-test:
 	@echo 'Ejecutando unit tests, espere ...'
-	@pytest test/unit/
+	@pytest ./testing/unit/
 
 run-local:
 	@del operations.db

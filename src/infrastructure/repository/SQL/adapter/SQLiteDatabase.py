@@ -19,3 +19,7 @@ class SQLiteDatabase:
 
     def closeConnection(self, session):
         session.close()
+
+    def resetDatabase(self):
+        Base.metadata.drop_all(self.engine)
+        Base.metadata.create_all(self.engine)
