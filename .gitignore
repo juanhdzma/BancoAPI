@@ -2,5 +2,11 @@
 venv/
 
 # Cache folders
-/__pycache__
+__pycache__/
 .pytest_cache/
+
+# Database
+*.db
+
+# Env
+.env
