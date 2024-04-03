@@ -37,3 +37,27 @@ class CreateAccountOUT:
         "message": "Field required",
         "status_code": 400
     }
+
+
+class GetAccountOUT:
+    validResponse = {
+        "is_error": False,
+        "data": {
+            "id": 1,
+            "user_id": "1",
+            "account_type": "Corriente",
+            "balance": 0,
+            "status": True
+        },
+        "status_code": 200
+    }
+    invalidIDResponse = {
+        "is_error": True,
+        "message": "Id no valido",
+        "status_code": 400
+    }
+    notFoundResponse = {
+        "is_error": True,
+        "message": "La cuenta no esta registrada en la base de datos",
+        "status_code": 404
+    }
