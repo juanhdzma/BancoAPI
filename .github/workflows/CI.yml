@@ -1,0 +1,42 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.12"
+    - name: Setting Virtual Environment
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+    - name: Installing Dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Unit Testing
+      run: |
+        export PYTHONPATH="$PYTHONPATH:$PWD/src"
+        pytest ./testing/unit/
+    - name: Integration Testing
+      run: |
+        if [ -f operations.db ]; then
+          rm operations.db
+        fi
+        cp env/local.env .env
+        screen -dmS uvicorn python -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000 && sleep 5
+        pytest ./testing/integration/
