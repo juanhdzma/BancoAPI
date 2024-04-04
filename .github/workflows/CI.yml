@@ -30,7 +30,8 @@ jobs:
         make setup
     - name: Unit Testing
       run: |
-        make unit-test
+        export PYTHONPATH="$PYTHONPATH:$PWD/src"
+        pytest ./testing/unit/
     - name: Integration Testing
       run: |
         make run-local && sleep 5
