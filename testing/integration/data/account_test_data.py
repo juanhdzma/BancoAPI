@@ -61,3 +61,54 @@ class GetAccountOUT:
         "message": "La cuenta no esta registrada en la base de datos",
         "status_code": 404
     }
+
+
+class GetAccountsOUT:
+    invalidIDResponse = {
+        "is_error": True,
+        "message": "Id no valido",
+        "status_code": 400
+    }
+    notFoundResponse = {
+        "is_error": True,
+        "message": "No hay cuentas asignadas a este id",
+        "status_code": 404
+    }
+    validResponse = {
+        "is_error": False,
+        "data": [
+            {
+                "id": 1,
+                "user_id": "1",
+                "account_type": "Corriente",
+                "balance": 0.0,
+                "status": True
+            },
+            {
+                "id": 2,
+                "user_id": "1",
+                "account_type": "Corriente",
+                "balance": 0.0,
+                "status": True
+            }
+        ],
+        "status_code": 200
+    }
+
+
+class DeactivateAccountOUT:
+    validResponse = {
+        "is_error": False,
+        "data": "La cuenta ha sido desactivada, el saldo a desembolsar es $0.0",
+        "status_code": 200
+    }
+    invalidID = {
+        "is_error": True,
+        "message": "Id no valido",
+        "status_code": 400
+    }
+    notFound = {
+        "is_error": True,
+        "message": "La cuenta no esta registrada en la base de datos",
+        "status_code": 404
+    }
