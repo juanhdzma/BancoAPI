@@ -17,6 +17,7 @@ integration-test:
 	@pytest ./testing/integration/
 
 unit-test:
+	@set PYTHONPATH=%PYTHONPATH%;%cd%\src
 	@echo 'Ejecutando unit tests, espere ...'
 	@pytest ./testing/unit/
 
