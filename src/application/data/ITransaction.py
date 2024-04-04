@@ -11,7 +11,7 @@ class ITransaction(BaseModel):
         if value > 0:
             return value
         raise ValueError("Las cuentas no son validas")
-    
+
     @field_validator("value")
     def validateValue(cls, value):
         if value > 0:

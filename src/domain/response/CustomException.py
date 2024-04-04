@@ -9,10 +9,10 @@ class CustomException(Exception):
         self.message = message
         self.status_code = statusCode
         self.timestamp = datetime.now()
-    
+
     def serialize(self):
         return jsonable_encoder(self)
-    
+
 
 class BadRequestException(CustomException):
     def __init__(self, message: str):
@@ -33,6 +33,7 @@ class NotFoundException(CustomException):
     def __init__(self, message: str):
         super().__init__(message, StatusCode.NOT_FOUND)
 
+
 class InvalidMethodException(CustomException):
     def __init__(self, message: str):
         super().__init__(message, StatusCode.INVALID_METHOD)
@@ -41,4 +42,3 @@ class InvalidMethodException(CustomException):
 class TeapotException(CustomException):
     def __init__(self, message: str):
         super().__init__(message, StatusCode.TEAPOT)
-

@@ -12,7 +12,7 @@ class IAccount(BaseModel):
         if value.isdigit():
             return value
         raise ValueError("La cedula no es valida")
-    
+
     @field_validator("account_type")
     def validateAccountType(cls, value):
         if value in validAccountTypes:

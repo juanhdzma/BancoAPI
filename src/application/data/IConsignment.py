@@ -10,7 +10,7 @@ class IConsignment(BaseModel):
         if value > 0:
             return value
         raise ValueError("La cuenta no es valida")
-    
+
     @field_validator("value")
     def validateValue(cls, value):
         if value > 0:

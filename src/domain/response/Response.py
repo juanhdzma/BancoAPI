@@ -1,5 +1,5 @@
 from fastapi.responses import JSONResponse
-from src.domain.response.Result import *
+from typing import TypeVar
 from src.domain.response.CustomException import CustomException
 
 T = TypeVar('T')

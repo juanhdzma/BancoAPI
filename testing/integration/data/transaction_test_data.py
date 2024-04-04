@@ -126,30 +126,30 @@ class TransactionIN:
 
 class RecordOUT:
     notFound = {
-    "is_error": True,
-    "message": "No hay transacciones asociadas a esta cuenta",
-    "status_code": 404
-}
+        "is_error": True,
+        "message": "No hay transacciones asociadas a esta cuenta",
+        "status_code": 404
+    }
     invalidID = {
-    "is_error": True,
-    "message": "Id no valido",
-    "status_code": 400
-}
+        "is_error": True,
+        "message": "Id no valido",
+        "status_code": 400
+    }
     validResponse = {
-    "is_error": False,
-    "data": [
-        {
-            "id": 1,
-            "source_account": None,
-            "destination_account": 1,
-            "value": 10.0
-        },
-        {
-            "id": 2,
-            "source_account": 1,
-            "destination_account": 2,
-            "value": 10.0
-        }
-    ],
-    "status_code": 200
-}
+        "is_error": False,
+        "data": [
+            {
+                "id": 1,
+                "source_account": None,
+                "destination_account": 1,
+                "value": 10.0
+            },
+            {
+                "id": 2,
+                "source_account": 1,
+                "destination_account": 2,
+                "value": 10.0
+            }
+        ],
+        "status_code": 200
+    }
