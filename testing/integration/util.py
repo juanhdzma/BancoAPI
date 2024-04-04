@@ -11,4 +11,10 @@ def removeTimestamp(inDict):
         del inDict["timestamp"]
     return inDict
 
+def removeTransactionDatetime(inDict):
+    inDict = removeTimestamp(inDict)
+    for transaction in inDict["data"]:
+        del transaction["transaction_datetime"]
+    return inDict
+
 
