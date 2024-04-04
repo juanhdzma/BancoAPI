@@ -61,8 +61,8 @@ class AccountService:
             result = self.account_service.desactivarCuenta(account.id)
             if result:
                 return Response.ok(
-                    CorrectResult(f'La cuenta ha sido desactivada,\
-                                  el saldo a desembolsar es ${balance}'))
+                    CorrectResult
+                    (f'La cuenta ha sido desactivada, el saldo a desembolsar es ${balance}'))
             return Response.failure(InternalServerErrorException("Error al desactivar la cuenta"))
         return Response.failure(NotFoundException
                                 ("La cuenta no esta registrada en la base de datos"))
