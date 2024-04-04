@@ -38,5 +38,5 @@ jobs:
           rm operations.db
         fi
         cp env/local.env .env
-        python -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000 && sleep 5
+        nohup python -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000 > /dev/null 2>&1 && sleep 5
         pytest ./testing/integration/
