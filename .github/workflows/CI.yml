@@ -30,6 +30,7 @@ jobs:
         pip freeze > requirements.txt
     - name: Unit Testing
       run: |
+        source venv/bin/activate
         export PYTHONPATH="$PYTHONPATH:$PWD/src"
         pytest ./testing/unit/
     - name: Integration Testing
@@ -38,5 +39,6 @@ jobs:
           rm operations.db
         fi
         cp env/local.env .env
+        source venv/bin/activate
         python -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000 && sleep 5
         pytest ./testing/integration/
