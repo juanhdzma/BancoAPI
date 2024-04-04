@@ -64,3 +64,27 @@ A continuacion se encuentra el enlace al archivo .drawio en el cual estan dispue
 [Archivo de Postman](./docs/postman/BancoAPI.postman.json)
 
 [OpenAPI](http://127.0.0.1:8000/docs) (el servidor debe estar activo)
+
+## Ejecutar Pruebas
+
+#### Unit Tests
+
+Para ejecutar los unit test se debe ejecutar el siguiente commando.
+
+``` terminal
+make unit-test
+```
+
+#### Integration Tests
+
+Para ejecutar los test de integracion es necesario ejecutar el servidor local primero, para esto se debe ejecutar el siguiente comando.
+
+``` terminal
+make run-local
+```
+
+Luego de ejecutar este comando, en otra consola y de forma simultanea, se debe ejecutar el siguiente comando para hacer las pruebas.
+
+``` terminal
+make integration-test
+```
