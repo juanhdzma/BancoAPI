@@ -27,10 +27,9 @@ jobs:
         source venv/bin/activate
     - name: Installing Dependencies
       run: |
-        pip freeze > requirements.txt
+        pip install -r requirements.txt
     - name: Unit Testing
       run: |
-        source venv/bin/activate
         export PYTHONPATH="$PYTHONPATH:$PWD/src"
         pytest ./testing/unit/
     - name: Integration Testing
@@ -39,6 +38,5 @@ jobs:
           rm operations.db
         fi
         cp env/local.env .env
-        source venv/bin/activate
         python -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000 && sleep 5
         pytest ./testing/integration/
