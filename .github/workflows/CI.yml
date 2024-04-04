@@ -4,8 +4,6 @@
 name: CI
 
 on:
-  push:
-    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -13,7 +11,8 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  Build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -28,6 +27,14 @@ jobs:
     - name: Installing Dependencies
       run: |
         pip install -r requirements.txt
+  Test:
+    name: Test
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Activating Environment
+      run: |
+        source venv/bin/activate
     - name: Unit Testing
       run: |
         export PYTHONPATH="$PYTHONPATH:$PWD/src"
