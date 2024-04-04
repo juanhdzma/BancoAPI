@@ -3,6 +3,7 @@ from src.infrastructure.repository.SQL.model.Account import Account
 from src.application.data.IAccount import IAccount
 from typing import List
 
+
 class AccountRepository:
     @abstractmethod
     def crearCuenta(self, data: IAccount) -> bool:

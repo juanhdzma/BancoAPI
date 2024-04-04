@@ -12,13 +12,13 @@ class IUser(BaseModel):
         if value.isdigit():
             return value
         raise ValueError("La cedula no es valida")
-    
+
     @field_validator("phone")
     def validatePhone(cls, value):
         if value.isdigit() and len(value) == 10:
             return value
         raise ValueError("El telefono no es valido")
-    
+
     @field_validator("name", "last_name")
     def validateName(cls, value):
         if value.isalpha():

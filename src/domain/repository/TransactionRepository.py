@@ -17,4 +17,3 @@ class TransactionRepository:
     @abstractmethod
     def historialTransferencias(self, idAccount: int) -> List[Transaction]:
         pass
-

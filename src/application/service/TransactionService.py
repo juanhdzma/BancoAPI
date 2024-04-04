@@ -1,7 +1,9 @@
 from src.application.data.IConsignment import IConsignment
 from src.application.data.ITransaction import ITransaction
-from src.domain.response.Result import *
-from src.domain.response.CustomException import *
+from src.domain.response.Result import CorrectResult
+from src.domain.response.CustomException import (
+    BadRequestException, InternalServerErrorException, NotFoundException
+)
 from src.domain.response.Response import Response
 from src.infrastructure.configuration.DependencyContainer import DependencyContainer
 from src.domain.repository.AccountRepository import AccountRepository
@@ -24,7 +26,8 @@ class TransactionService:
             result = self.transaction_service.hacerConsignacion(params)
             if result:
                 return Response.ok(CorrectResult("Consignacion realizada con exito"))
-            return Response.failure(InternalServerErrorException("Error al realizar la consignacion"))
+            return Response.failure(InternalServerErrorException
+                                    ("Error al realizar la consignacion"))
         return Response.failure(BadRequestException("No existe esta cuenta"))
 
     def getRecords(self, idAccount):
@@ -42,20 +45,21 @@ class TransactionService:
         params = transfer.model_dump()
 
         if params['destination_account'] == params['source_account']:
-            return Response.failure(BadRequestException("La cuenta de origen y destino no pueden ser las mismas"))
+            return Response.failure(BadRequestException
+                                    ("La cuenta de origen y destino no pueden ser las mismas"))
 
         accountDestination = self.account_service.consultarCuenta(params['destination_account'])
         accountOrigin = self.account_service.consultarCuenta(params['source_account'])
 
-        if accountOrigin == None or accountOrigin == False:
+        if accountOrigin is None or accountOrigin is False:
             return Response.failure(BadRequestException("La cuenta de origen no existe"))
 
         if accountOrigin.balance < params['value']:
             return Response.failure(BadRequestException("Saldo insuficiente para transferir"))
-        
+
         if accountDestination:
             result = self.transaction_service.hacerTransferencia(params)
             if result:
                 return Response.ok(CorrectResult("Transferencia realizada con exito"))
-            return Response.failure(InternalServerErrorException("Error al realizar la transferencia"))
+            return Response.failure(InternalServerErrorException("Error en la transferencia"))
         return Response.failure(BadRequestException("La cuenta de destino no existe"))

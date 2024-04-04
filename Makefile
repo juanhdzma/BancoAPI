@@ -21,6 +21,10 @@ unit-test:
 	@echo 'Ejecutando unit tests, espere ...'
 	@pytest ./testing/unit/
 
+lint:
+	@echo 'Evaluando el codigo con lint, espere ...'
+	@flake8 src testing
+
 run-local:
 	@del operations.db
 	@copy env\local.env .env

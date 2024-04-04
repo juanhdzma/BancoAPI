@@ -48,4 +48,3 @@ class AccountDAO(AccountRepository):
             return False
         finally:
             self.database.closeConnection(session)
-

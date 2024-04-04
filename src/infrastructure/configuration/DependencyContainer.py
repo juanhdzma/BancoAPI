@@ -5,14 +5,16 @@ from src.infrastructure.repository.SQL.adapter.CloudDatabase import CloudDatabas
 from src.domain.repository.UserRepository import UserRepository
 from src.domain.repository.AccountRepository import AccountRepository
 from src.domain.repository.TransactionRepository import TransactionRepository
-from src.infrastructure.repository.SQL.dao.UserDAO import UserDAO 
-from src.infrastructure.repository.SQL.dao.AccountDAO import AccountDAO 
-from src.infrastructure.repository.SQL.dao.TransactionDAO import TransactionDAO 
+from src.infrastructure.repository.SQL.dao.UserDAO import UserDAO
+from src.infrastructure.repository.SQL.dao.AccountDAO import AccountDAO
+from src.infrastructure.repository.SQL.dao.TransactionDAO import TransactionDAO
+
 
 if ENV == 'local':
     database = SQLiteDatabase()
-elif ENV  == 'prod':
+elif ENV == 'prod':
     database = CloudDatabase()
+
 
 class DependencyContainer(Module):
     @singleton
