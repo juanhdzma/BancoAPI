@@ -4,8 +4,6 @@
 name: CI
 
 on:
-  push:
-    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -43,3 +41,16 @@ jobs:
         cp env/local.env .env
         screen -dmS uvicorn python -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000 && sleep 5
         pytest ./testing/integration/
+    - name: Login Dockerhub
+      env:
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    -name: Build the Docker Image
+      run: |
+        docker build -t banco_api .
+    -name: Push to Dockerhub
+      run: |
+        docker push juanhdzma/banco_api:latest
+
