@@ -4,13 +4,11 @@ on:
   push:
     branches: [ "master" ]
 
-permissions:
-  contents: read
-
 jobs:
-  build:
+  Deploy:
     runs-on: banco-api
     steps:
+    - uses: actions/checkout@v3
     - name: Pull Docker image
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
