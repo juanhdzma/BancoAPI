@@ -41,13 +41,17 @@ jobs:
         cp env/local.env .env
         screen -dmS uvicorn python -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000 && sleep 5
         pytest ./testing/integration/
+    - name: Build the Docker Image
+      env:
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      run: docker build -t $DOCKER_USERNAME/banco_api:latest -f Dockerfile .
     - name: Login Dockerhub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - name: Build the Docker Image
-      run: docker build -t banco_api .
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD docker.io
     - name: Push to Dockerhub
-      run: docker push juanhdzma/banco_api:latest
+      env:
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      run: docker push $DOCKER_USERNAME/banco_api:latest
 
