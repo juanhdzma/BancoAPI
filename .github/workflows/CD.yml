@@ -16,4 +16,6 @@ jobs:
     - name: Delete Old Container
       run: sudo docker rm -f banco_api || true
     - name: Run Docker Container
+      env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
       run: sudo docker run -d -p 8000:8000 --name banco_api $DOCKER_USERNAME/banco_api
