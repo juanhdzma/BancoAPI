@@ -1,0 +1,20 @@
+name: CD
+
+on:
+  push:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: banco-api
+    steps:
+    - name: Pull Docker image
+      env:
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+      run: sudo docker pull $DOCKER_USERNAME/banco_api:latest
+    - name: Delete Old Container
+      run: sudo docker rm -f banco_api || true
+    - name: sudo docker run -d -p 8000:8000 --name banco_api $DOCKER_USERNAME/banco_api
