@@ -38,6 +38,8 @@ jobs:
         cp env/local.env .env
         screen -dmS uvicorn python -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000 && sleep 5
         pytest ./testing/integration/
+    - name: Copying Env
+      run: cp env/prod.env .env
     - name: Build the Docker Image
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
