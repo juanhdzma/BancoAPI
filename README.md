@@ -88,3 +88,6 @@ Luego de ejecutar este comando, en otra consola y de forma simultanea, se debe e
 ``` terminal
 make integration-test
 ```
+
+## Arquitectura
+
