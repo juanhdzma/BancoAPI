@@ -23,7 +23,8 @@ class AccountDAO(AccountRepository):
             session = self.database.createConnection()
             accounts = session.query(Account).filter_by(user_id=idUser, status=True).all()
             return accounts
-        except BaseException:
+        except BaseException as err:
+            print(err)
             return False
         finally:
             self.database.closeConnection(session)
