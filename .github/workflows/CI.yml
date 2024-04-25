@@ -18,6 +18,7 @@ jobs:
       uses: ActionsTools/read-json-action@main
       with:
         file_path: "app.json"
+    - name: Print Version
       run: |
         echo "Version: ${{steps.app_properties.outputs.name}}"
     - name: Setting Virtual Environment
