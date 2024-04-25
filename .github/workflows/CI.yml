@@ -18,7 +18,7 @@ jobs:
       run: |
         pip install jq
         VERSION=$(jq -r '.version' app.json)
-        DESCRIPTION=$(jq -r '.description' app.json)
+        echo "::set-output name=version::$VERSION"
     - name: Setting Virtual Environment
       run: |
         python -m venv venv
@@ -46,7 +46,7 @@ jobs:
     - name: Build the Docker Image
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-      run: docker build -t $DOCKER_USERNAME/banco_api:${{ steps.app_metadata.outputs.version }} -f Dockerfile .
+      run: docker build -t $DOCKER_USERNAME/banco_api:$VERSION -f Dockerfile .
     - name: Login Dockerhub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
@@ -55,5 +55,5 @@ jobs:
     - name: Push to Dockerhub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-      run: docker push $DOCKER_USERNAME/banco_api:${{ steps.app_metadata.outputs.version }}
+      run: docker push $DOCKER_USERNAME/banco_api:$VERSION
 
