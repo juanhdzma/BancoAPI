@@ -13,12 +13,13 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.12"
-    - name: Read app.json for version and description
-      id: app_metadata
-      run: |
-        pip install jq
-        VERSION=$(jq -r '.version' app.json)
-        echo "::set-output name=version::$VERSION"
+    - name: Read Version
+      id: app_properties
+      uses: ActionsTools/read-json-action@main
+      with:
+        file_path: "app.json"
+      - run: |
+        echo "Version: ${{steps.json_properties.outputs.name}}"
     - name: Setting Virtual Environment
       run: |
         python -m venv venv
@@ -46,7 +47,7 @@ jobs:
     - name: Build the Docker Image
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-      run: docker build -t $DOCKER_USERNAME/banco_api:$VERSION -f Dockerfile .
+      run: docker build -t $DOCKER_USERNAME/banco_api:${{steps.json_properties.outputs.name}} -f Dockerfile .
     - name: Login Dockerhub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
@@ -55,5 +56,5 @@ jobs:
     - name: Push to Dockerhub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-      run: docker push $DOCKER_USERNAME/banco_api:$VERSION
+      run: docker push $DOCKER_USERNAME/banco_api:${{steps.json_properties.outputs.name}}
 
