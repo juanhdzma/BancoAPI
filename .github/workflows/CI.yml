@@ -20,7 +20,7 @@ jobs:
         file_path: "app.json"
     - name: Print Version
       run: |
-        echo "Version: ${{steps.app_properties.outputs.name}}"
+        echo "Version: ${{steps.app_properties.outputs.version}}"
     - name: Setting Virtual Environment
       run: |
         python -m venv venv
