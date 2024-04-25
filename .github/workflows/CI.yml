@@ -48,7 +48,9 @@ jobs:
     - name: Build the Docker Image
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-      run: docker build -t $DOCKER_USERNAME/banco_api:${{steps.app_properties.outputs.version}} -f Dockerfile .
+      run: |
+        docker build -t $DOCKER_USERNAME/banco_api:${{steps.app_properties.outputs.version}} -f Dockerfile .
+        docker tag $DOCKER_USERNAME/banco_api:${{steps.app_properties.outputs.version}} $DOCKER_USERNAME/banco_api:latest
     - name: Login Dockerhub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
@@ -57,5 +59,8 @@ jobs:
     - name: Push to Dockerhub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-      run: docker push $DOCKER_USERNAME/banco_api:${{steps.app_properties.outputs.version}}
+      run: |
+        docker push $DOCKER_USERNAME/banco_api:${{steps.app_properties.outputs.version}}
+        docker push $DOCKER_USERNAME/banco_api:latest 
+
 
