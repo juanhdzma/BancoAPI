@@ -63,7 +63,7 @@ A continuacion se encuentra el enlace al archivo .drawio en el cual estan dispue
 
 [Archivo de Postman](./docs/postman/BancoAPI.postman.json)
 
-[OpenAPI](ec2-3-137-174-126.us-east-2.compute.amazonaws.com/docs)
+[OpenAPI](http://ec2-3-137-174-126.us-east-2.compute.amazonaws.com/docs)
 
 ## Ejecutar Pruebas
 
