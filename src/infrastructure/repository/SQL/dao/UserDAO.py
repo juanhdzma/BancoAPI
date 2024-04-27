@@ -33,8 +33,8 @@ class UserDAO(UserRepository):
             session = self.database.createConnection()
             users = session.query(User).all()
             return users
-        except BaseException as err:
-            print(err)
+        except BaseException as error:
+            print(error)
             return False
         finally:
             self.database.closeConnection(session)
