@@ -45,20 +45,20 @@ jobs:
         screen -dmS uvicorn python -B -m uvicorn src.main:app --host 127.0.0.1 --port 8000 && sleep 5
         pytest ./testing/integration/
     - name: Create .env file from environment variables
-        env:
-          DB_HOST: ${{ vars.DB_HOST }}
-          DB_PORT: ${{ vars.DB_PORT }}
-          DB_USER: ${{ vars.DB_USER }}
-          DB_PASS: ${{ vars.DB_PASS }}
-          DB_NAME: ${{ vars.DB_NAME }}
-          ENV: prod
-        run: |
-          echo "DB_HOST=$DB_HOST" >> .env
-          echo "DB_PORT=$DB_PORT" >> .env
-          echo "DB_USER=$DB_USER" >> .env
-          echo "DB_PASS=$DB_PASS" >> .env
-          echo "DB_NAME=$DB_NAME" >> .env
-          echo "ENV=$ENV" >> .env
+      env:
+        DB_HOST: ${{ vars.DB_HOST }}
+        DB_PORT: ${{ vars.DB_PORT }}
+        DB_USER: ${{ vars.DB_USER }}
+        DB_PASS: ${{ vars.DB_PASS }}
+        DB_NAME: ${{ vars.DB_NAME }}
+        ENV: prod
+      run: |
+        echo "DB_HOST=$DB_HOST" >> .env
+        echo "DB_PORT=$DB_PORT" >> .env
+        echo "DB_USER=$DB_USER" >> .env
+        echo "DB_PASS=$DB_PASS" >> .env
+        echo "DB_NAME=$DB_NAME" >> .env
+        echo "ENV=$ENV" >> .env
     - name: Build the Docker Image
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
