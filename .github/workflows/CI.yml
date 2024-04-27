@@ -53,6 +53,7 @@ jobs:
         DB_NAME: ${{ vars.DB_NAME }}
         ENV: prod
       run: |
+        if [ -f .env ]; then rm .env; fi
         echo "DB_HOST=$DB_HOST" >> .env
         echo "DB_PORT=$DB_PORT" >> .env
         echo "DB_USER=$DB_USER" >> .env
