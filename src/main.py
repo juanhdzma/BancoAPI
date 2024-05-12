@@ -7,8 +7,18 @@ from src.domain.response.CustomException import (
 )
 from src.domain.response.Response import Response
 from src.infrastructure.api.router.AppRouter import banco_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow requests from any origin
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],  # Allow these HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
+
 app.include_router(banco_router, prefix="/BancoV1")
 
 

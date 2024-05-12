@@ -76,6 +76,4 @@ jobs:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
       run: |
         docker push $DOCKER_USERNAME/banco_api:${{steps.app_properties.outputs.version}}
-        docker push $DOCKER_USERNAME/banco_api:latest 
-
-
+        docker push $DOCKER_USERNAME/banco_api:latest
