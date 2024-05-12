@@ -5,9 +5,10 @@ info:
     Esta API proporciona una interfaz para interactuar con un sistema bancario,
     que incluye funcionalidades básicas como la gestión de usuarios, cuentas,
     transacciones y depósitos.
-  version: 1.0.0
+  version: 1.0.6
 servers:
   - url: http://127.0.0.1:8000
+  - url: http://ec2-3-137-174-126.us-east-2.compute.amazonaws.com/
 paths:
   /BancoV1/user:
     post:
