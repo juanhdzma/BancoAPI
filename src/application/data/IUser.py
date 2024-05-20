@@ -21,6 +21,8 @@ class IUser(BaseModel):
 
     @field_validator("name", "last_name")
     def validateName(cls, value):
-        if value.isalpha():
-            return value
-        raise ValueError("El nombre o apellido no son validos")
+        parts = value.split()   
+        for part in parts:
+            if not part.isalpha():
+                raise ValueError("El nombre o apellido no son validos")
+        return value
